@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="container mt-5">
+    <a href="/add-profile/" class="btn btn-success">Add Profile</a>
+      <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">NAME</th>
+            <th scope="col">AGE</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">ADDRESS</th>
+            <th scope="col">IMAGE</th>
+            <th scope="col">ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for profile in ProfileList %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{profile.name}}</td>
+            <td>{{profile.age}}</td>
+            <td>{{profile.email}}</td>
+            <td>{{profile.address}}</td>
+            <td> <img src="/media/{{profile.image}}" style="height:200px"> </td>
+            <td> 
+              <a href="/delete-profile/{{profile.id}}/" class = "btn btn-danger m-2">Delete</a>
+              <a href="/update-profile/{{profile.id}}" class="btn btn-success">Update</a>
+              <!-- <a href="/update-recepies/{{recepie.id}}/" class = "btn btn-success">Update </a> -->
+            </td>
+          
+          </tr>
+
+          {% endfor %}
+          
+        </tbody>
+      </table>
+</div>
+
+{% endblock %}

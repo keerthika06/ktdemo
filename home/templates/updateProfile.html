@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="container mt-5">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h2>Update Profile</h2>
+      {% if messages %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+       <hr>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input name="name" value ="{{profile.name}}"required type ="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Age </label>
+          <input name="age" class="form-control" value="{{profile.age}}" name="age"  required type ="text">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Email </label>
+            <input name="email" class="form-control" value="{{profile.email}}" name="email"  required type ="text">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Address </label>
+            <textarea class="form-control" value="" name="address"  required type ="text">{{profile.address}}</textarea>
+          </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1"  class="form-label">Image </label>
+            <input type="file" class="form-control" name ="image">
+          </div>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+      </form>
+</div>
+{% endblock %}
